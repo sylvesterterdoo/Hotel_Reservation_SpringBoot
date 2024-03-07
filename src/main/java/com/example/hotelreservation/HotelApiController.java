@@ -1,5 +1,7 @@
 package com.example.hotelreservation;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,11 +22,8 @@ public class HotelApiController {
         return hotelRepository.findAll();
     }
 
-    @PostMapping("/hotels")
-    Hotel postHotel(@RequestBody Hotel hotel) {
-        if (hotel.getId() == null) {
-            return hotelRepository.save(new Hotel(hotel.getName()));
-        }
-        return hotelRepository.save(hotel);
+    @PostMapping(value = "/hotels", consumes = "application/json")
+    ResponseEntity<Hotel> postHotel(@RequestBody Hotel hotel) {
+       return new ResponseEntity<>(hotelRepository.save(hotel), HttpStatus.CREATED);
     }
 }

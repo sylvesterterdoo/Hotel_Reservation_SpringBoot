@@ -1,32 +1,48 @@
 package com.example.hotelreservation;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import java.util.UUID;
 
 @Entity
 public class Hotel {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String name;
 
-    public Hotel(String id, String name) {
+    private Double price;
+
+    private Boolean availability;
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+
+    public Hotel(Integer id, String name, Double price, boolean availability) {
         this.id = id;
         this.name = name;
+        this.price = price;
+        this.availability = availability;
     }
 
-    public Hotel(String name) {
-        this(UUID.randomUUID().toString(), name);
-    }
-
-    public String getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
