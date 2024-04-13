@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Table(name = "hotel_guests")
 public class HotelGuest {
 
-    /*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,39 +34,7 @@ public class HotelGuest {
         this.gender = gender;
     }
 
-     */
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "guest_name")
-    private String guestName;
-
-    @Column(name = "gender")
-    private String gender;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reservation_id")
-    @JsonIgnore
-    private Reservation reservation;
-
-
-    public HotelGuest() {
-        // Default constructor
-    }
-
-    public HotelGuest(Long id, String guestName, String gender, Reservation reservation) {
-        this.id = id;
-        this.guestName = guestName;
-        this.gender = gender;
-        this.reservation = reservation;
-    }
-
-    public HotelGuest(String guestName, String gender) {
-        this.guestName = guestName;
-        this.gender = gender;
-    }
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -101,3 +68,4 @@ public class HotelGuest {
         this.reservation = reservation;
     }
 }
+

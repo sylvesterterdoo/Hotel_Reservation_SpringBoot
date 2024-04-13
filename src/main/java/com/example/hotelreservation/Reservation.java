@@ -1,9 +1,9 @@
 package com.example.hotelreservation;
 
-//import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 
 import java.util.List;
+
 
 @Entity
 @Table(name = "reservations")
@@ -22,8 +22,10 @@ public class Reservation {
     @Column(name = "checkout")
     private String checkOutDate;
 
-    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<HotelGuest> guestList;
+
+    // Getters and setters
 
     public Long getId() {
         return id;
@@ -65,4 +67,3 @@ public class Reservation {
         this.guestList = guestList;
     }
 }
-

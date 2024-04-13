@@ -26,8 +26,9 @@ public class HotelReservationApiController {
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ReservationResponse guestsReservation(@RequestBody ReservationRequest reservationRequest) {
+    public ResponseEntity<ReservationResponse> guestsReservation(@RequestBody ReservationRequest reservationRequest) {
         Long confirmationNumber = reservationService.makeReservation(reservationRequest);
-        return new ReservationResponse(confirmationNumber, reservationRequest.getHotelName());
+        ReservationResponse response = new ReservationResponse(confirmationNumber, reservationRequest.getHotelName());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 }
