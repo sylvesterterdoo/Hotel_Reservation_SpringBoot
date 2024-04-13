@@ -1,7 +1,5 @@
 package com.example.hotelreservation;
 
-//import com.fasterxml.jackson.annotation.JsonProperty;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
