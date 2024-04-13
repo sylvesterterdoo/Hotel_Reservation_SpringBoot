@@ -17,6 +17,11 @@ public class HotelApiController {
         this.hotelRepository = hotelRepository;
     }
 
+    @GetMapping("/")
+    String hello() {
+        return "Hotels";
+    }
+
     @GetMapping("/hotels")
     Iterable<Hotel> getHotels() {
         return hotelRepository.findAll();
