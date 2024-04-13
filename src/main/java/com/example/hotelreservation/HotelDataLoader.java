@@ -17,9 +17,13 @@ public class HotelDataLoader {
     @PostConstruct
     private void loadHotelData() {
         this.hotelRepository.saveAll( List.of(
-                new Hotel(1, "Halifax Hotel", 52.3, true),
-                new Hotel(2, "Dartmouth Hotel", 40.5, false),
-                new Hotel(3, "Bedford Hotel", 60.7, true)
+                new Hotel(1, "Halifax Hotel", 152.3, true),
+                new Hotel(2, "Dartmouth Hotel", 240.5, false),
+                new Hotel(3, "Bedford Hotel", 260.7, true),
+                new Hotel(4, "Calgary Hotel", 170.7, true),
+                new Hotel(5, "Toronto Hotel", 370.7, true),
+                new Hotel(6, "Vancouver Hotel", 270.7, true),
+                new Hotel(7, "Montreal Hotel", 270.7, true)
                 )
         );
     }
